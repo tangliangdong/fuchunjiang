@@ -1,0 +1,23 @@
+page-about{
+  .about-card{
+    .card-header{
+      padding:  10px 0px 6px 20px;
+    }
+
+    hr{
+      margin: 5px 0 0;
+    }
+    .grid{
+      padding: 0;
+
+      .col{
+        padding: 0 5px;
+
+        .button{
+          margin: 0;
+        }
+      }
+
+    }
+  }
+}

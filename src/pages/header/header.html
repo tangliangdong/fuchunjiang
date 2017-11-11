@@ -1,0 +1,12 @@
+<ion-navbar>
+  <button ion-button menuToggle *ngIf="hasMenu">
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>{{title}}</ion-title>
+  <ion-buttons end>
+    <button ion-button icon-only (click)="openCart()">
+      <ion-icon name="ios-cart-outline"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+<ion-searchbar *ngIf="hasSearchbar" (ionInput)="getItems($event)"></ion-searchbar>

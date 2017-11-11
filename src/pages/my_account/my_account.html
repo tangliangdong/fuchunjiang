@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="popView()" icon-start>
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>我的账户</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h5>订单</h5>
+  <ion-list class="account-list">
+    <button ion-item (click)="itemSelected(item)">
+      我的订单
+    </button>
+  </ion-list>
+</ion-content>

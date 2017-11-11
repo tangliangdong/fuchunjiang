@@ -4,16 +4,16 @@ import { NavController,ViewController,App } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-setup',
+  templateUrl: 'setup.html'
 })
-export class ListPage {
+export class SetupPage {
 
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public appCtrl: App) {
-    
+
   }
 
   popView(){

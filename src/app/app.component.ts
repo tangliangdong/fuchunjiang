@@ -3,9 +3,14 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
+import { IndentPage } from '../pages/indent/indent';
+import { WishListPage } from '../pages/wish_list/wish_list';
+import { CategoryPage } from '../pages/category/category';
+import { SetupPage } from '../pages/setup/setup';
+import { MyAccountPage } from '../pages/my_account/my_account';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,15 +21,25 @@ export class MyApp {
 
   // rootPage:any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  first_pages: Array<{title: string, component: any}>;
+  second_pages: Array<{title: string, component: any}>;
+  third_pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: TabsPage },
-      { title: 'List', component: ListPage }
+    this.first_pages = [
+      { title: '首页', component: TabsPage },
+      // { title: '选择商品种类', component: CategoryPage },
+    ];
+    this.second_pages = [
+      { title: '我的订单', component: IndentPage },
+      { title: '心愿单', component: WishListPage },
+      { title: '我的账户', component: MyAccountPage },
+    ];
+    this.third_pages = [
+      { title: '设置', component: SetupPage },
     ];
 
   }
