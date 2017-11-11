@@ -20,6 +20,8 @@ import { SetupPage } from '../pages/setup/setup';
 import { MyAccountPage } from '../pages/my_account/my_account';
 import { WishListPage } from '../pages/wish_list/wish_list';
 import { ProductDetailPage } from '../pages/product_detail/product_detail';
+import { CommentPage } from '../pages/comment/comment';
+import { ArticlePage } from '../pages/article/article';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -41,6 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IndentPage,
     WishListPage,
     ProductDetailPage,
+    CommentPage,
+    ArticlePage,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +66,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IndentPage,
     WishListPage,
     ProductDetailPage,
+    CommentPage,
+    ArticlePage,
   ],
   providers: [
     StatusBar,

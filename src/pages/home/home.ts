@@ -4,13 +4,12 @@ import {
   ComponentFactoryResolver,
   ComponentFactory,
   ViewContainerRef,
-  componentRef,
 } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { CartPage } from '../cart/cart';
 import { HeaderPage } from '../header/header';
 import { ProductDetailPage } from '../product_detail/product_detail';
+import {CartPage} from '../cart/cart';
 
 @Component({
   selector: 'page-home',
@@ -26,13 +25,17 @@ export class HomePage {
 
   }
 
-  ngAfterViewInit() {
-    const factory: ComponentFactory<HeaderPage> =
-    this.resolver.resolveComponentFactory(HeaderPage);
-    this.componentRef = this.container.createComponent(factory);
-    this.componentRef.instance.title = '富春江';
-    this.componentRef.instance.hasSearchbar = true;
-    this.componentRef.instance.hasMenu = true;
+  // ngAfterViewInit() {
+  //   const factory: ComponentFactory<HeaderPage> =
+  //   this.resolver.resolveComponentFactory(HeaderPage);
+  //   let componentRef = this.container.createComponent(factory);
+  //   componentRef.instance.title = '富春江';
+  //   componentRef.instance.hasSearchbar = true;
+  //   componentRef.instance.hasMenu = true;
+  // }
+
+  openCart(){
+    this.navCtrl.push(CartPage);
   }
 
   openDetail(id) {

@@ -10,6 +10,10 @@ import {CartPage} from '../cart/cart';
 // 我的页面
 export class HeaderPage {
 
+  title = '';
+  hasSearchbar = false;
+  hasMenu = true;
+
   constructor(public navCtrl: NavController,) {
 
   }

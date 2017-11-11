@@ -4,12 +4,14 @@ import {
   ComponentFactoryResolver,
   ComponentFactory,
   ViewContainerRef,
-  componentRef,
 } from '@angular/core';
 
-import { ToastController } from 'ionic-angular';
+import { NavController,ToastController } from 'ionic-angular';
 
 import { HeaderPage } from '../header/header';
+import { ArticlePage } from '../article/article';
+import { CartPage } from '../cart/cart';
+
 @Component({
   selector: 'page-explore',
   templateUrl: 'explore.html'
@@ -22,11 +24,12 @@ export class ExplorePage {
   icon = "ios-heart-outline";
   collect_flag = true;
   constructor(private toastCtrl: ToastController,
+    public navCtrl: NavController,
     private resolver: ComponentFactoryResolver) {
 
   }
 
-  collecting() {
+  collecting(id) {
     if(this.collect_flag){
       this.icon = 'ios-heart';
       this.collect_flag = false;
@@ -50,12 +53,21 @@ export class ExplorePage {
 
   }
 
-  ngAfterViewInit() {
-    const factory: ComponentFactory<HeaderPage> =
-    this.resolver.resolveComponentFactory(HeaderPage);
-    this.componentRef = this.container.createComponent(factory);
-    this.componentRef.instance.title = '发现';
-    this.componentRef.instance.hasSearchbar = false;
-    this.componentRef.instance.menu = false;
+  openCart(){
+    this.navCtrl.push(CartPage);
   }
+
+  // 跳转文章页
+  openArticlePage(id){
+    this.navCtrl.push(ArticlePage);
+  }
+
+  // ngAfterViewInit() {
+  //   const factory: ComponentFactory<HeaderPage> =
+  //   this.resolver.resolveComponentFactory(HeaderPage);
+  //   let componentRef = this.container.createComponent(factory);
+  //   componentRef.instance.title = '发现';
+  //   componentRef.instance.hasSearchbar = false;
+  //   componentRef.instance.hasMenu = false;
+  // }
 }

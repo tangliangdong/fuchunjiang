@@ -1,19 +1,33 @@
 <ion-header>
-  <div #header></div>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>发现</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openCart()">
+        <ion-icon name="ios-cart-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> -->
 </ion-header>
 
 <ion-content class="card-background-page">
-  <ion-card>
+  <ion-card tappable (click)="openArticlePage(1)">
     <img src="assets/imgs/1.jpg"/>
     <div class="card-title">São Paulo</div>
     <div class="card-subtitle">41 Listings</div>
+    <button ion-button class="collection-btn icon-only" color="transparent" large (click)="collecting(1)">
+      <ion-icon [name]="icon"></ion-icon>
+    </button>
   </ion-card>
 
   <ion-card>
     <img src="assets/imgs/2.jpg"/>
     <div class="card-title">Amsterdam</div>
     <div class="card-subtitle">64 Listings</div>
-    <button ion-button class="collection-btn icon-only" color="transparent" large (click)="collecting()">
+    <button ion-button class="collection-btn icon-only" color="transparent" large (click)="collecting(2)">
       <ion-icon [name]="icon"></ion-icon>
     </button>
   </ion-card>
@@ -22,6 +36,9 @@
     <img src="assets/imgs/3.jpg"/>
     <div class="card-title">San Francisco</div>
     <div class="card-subtitle">72 Listings</div>
+    <button ion-button class="collection-btn icon-only" color="transparent" large (click)="collecting(3)">
+      <ion-icon [name]="icon"></ion-icon>
+    </button>
   </ion-card>
 
   <ion-card>

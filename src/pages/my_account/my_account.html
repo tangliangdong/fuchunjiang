@@ -1,6 +1,11 @@
 <ion-header>
-  <ion-navbar>
-    <ion-buttons start>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start *ngIf="isPushPage">
+      <button ion-button navPop icon-start>
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons start *ngIf="!isPushPage">
       <button ion-button (click)="popView()" icon-start>
         <ion-icon name="ios-arrow-back"></ion-icon>
       </button>

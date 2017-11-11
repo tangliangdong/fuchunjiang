@@ -4,12 +4,15 @@ import {
   ComponentFactoryResolver,
   ComponentFactory,
   ViewContainerRef,
-  componentRef,
 } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
 import { HeaderPage } from '../header/header';
+import { IndentPage } from '../indent/indent';
+import { CommentPage } from '../comment/comment';
+import { WishListPage } from '../wish_list/wish_list';
+import { CartPage } from '../cart/cart';
 
 
 @Component({
@@ -17,22 +20,51 @@ import { HeaderPage } from '../header/header';
   templateUrl: 'about.html'
 })
 // 我的页面
-export class AboutPage {
+export class AboutPage{
+  // @ViewChild('header',{read: ViewContainerRef}) container: ViewContainerRef;
 
-  @ViewChild('header',{read: ViewContainerRef}) container: ViewContainerRef;
-
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     private resolver: ComponentFactoryResolver) {
 
   }
 
-
-  ngAfterViewInit() {
-    const factory: ComponentFactory<HeaderPage> =
-    this.resolver.resolveComponentFactory(HeaderPage);
-    this.componentRef = this.container.createComponent(factory);
-    this.componentRef.instance.title = '我的';
-    this.componentRef.instance.hasSearchbar = false;
-    this.componentRef.instance.hasMenu = false;
+  // 跳转订单页
+  openIndentPage() {
+    this.navCtrl.push(IndentPage,{
+      isPushPage: true,
+    });
   }
+
+  // 跳转心愿单页
+  openWishListPage() {
+    this.navCtrl.push(WishListPage,{
+      isPushPage: true,
+    });
+  }
+
+  // 跳转app反馈页
+  openCommentPage(){
+    this.navCtrl.push(CommentPage,{
+      isPushPage: true,
+    });
+  }
+
+  openCart(){
+    this.navCtrl.push(CartPage);
+  }
+
+
+  // ngAfterViewInit() {
+  //   this.loadComponent();
+  // }
+
+  // loadComponent() {
+  //   const factory: ComponentFactory<HeaderPage> =
+  //   this.resolver.resolveComponentFactory(HeaderPage);
+  //   let componentRef = this.container.createComponent(factory);
+  //   componentRef.instance.title = '我的';
+  //   componentRef.instance.hasSearchbar = false;
+  //   componentRef.instance.hasMenu = false;
+  // }
 }

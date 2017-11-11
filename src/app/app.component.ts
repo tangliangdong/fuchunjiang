@@ -4,11 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 // import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { IndentPage } from '../pages/indent/indent';
 import { WishListPage } from '../pages/wish_list/wish_list';
-import { CategoryPage } from '../pages/category/category';
 import { SetupPage } from '../pages/setup/setup';
 import { MyAccountPage } from '../pages/my_account/my_account';
 

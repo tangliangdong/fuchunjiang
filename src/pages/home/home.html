@@ -1,5 +1,16 @@
 <ion-header>
-  <div #header></div>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>富春江</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openCart()">
+        <ion-icon name="ios-cart-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content>

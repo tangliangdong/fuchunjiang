@@ -3,10 +3,10 @@ import { NavController,ViewController,App } from 'ionic-angular';
 
 
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-comment',
+  templateUrl: 'comment.html'
 })
-export class ListPage {
+export class CommentPage {
 
   constructor(
     public navCtrl: NavController,
