@@ -9,13 +9,14 @@ import { IndentPage } from '../pages/indent/indent';
 import { WishListPage } from '../pages/wish_list/wish_list';
 import { SetupPage } from '../pages/setup/setup';
 import { MyAccountPage } from '../pages/my_account/my_account';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = TabsPage;
+  rootPage:any = LoginPage;
 
   // rootPage:any = HomePage;
 

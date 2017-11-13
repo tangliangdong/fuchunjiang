@@ -13,6 +13,8 @@ import { IndentPage } from '../indent/indent';
 import { CommentPage } from '../comment/comment';
 import { WishListPage } from '../wish_list/wish_list';
 import { CartPage } from '../cart/cart';
+import { BoughtPage } from '../bought/bought';
+import { SetupPage } from '../setup/setup';
 
 
 @Component({
@@ -52,6 +54,16 @@ export class AboutPage{
 
   openCart(){
     this.navCtrl.push(CartPage);
+  }
+  
+  openBoughtPage(){
+    this.navCtrl.push(BoughtPage);
+  }
+  
+  openSetupPage(){
+    this.navCtrl.push(SetupPage,{
+      isPushPage: true,
+    });
   }
 
 

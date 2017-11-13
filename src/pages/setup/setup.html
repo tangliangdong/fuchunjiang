@@ -20,4 +20,15 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <button ion-item (click)="openAccountPage()">
+      更改账户设置
+    </button>
+    <button ion-item (click)="openAddressPage()">
+      收货地址管理
+    </button>
+    <button ion-item (click)="clearLocalStorage()">
+      清除本地缓存
+    </button>
+  </ion-list>
 </ion-content>

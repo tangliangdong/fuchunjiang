@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button ion-button navPop icon-start>
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>您的地址</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>新地址</ion-list-header>
+    <ion-item>
+      <ion-input type="text" placeholder="省" value="{{Address.province}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="市" value="{{Address.city}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="区县" value="{{Address.county}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="街道地址" value="{{Address.street}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="收货人" value="{{Address.name}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="电话号码" value="{{Address.phone}}"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button block color="secondary" (click)='submit_address()'>添加地址</button>
+</ion-content>

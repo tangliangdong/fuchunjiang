@@ -27,7 +27,7 @@
           </button>
         </ion-col>
         <ion-col col-6>
-          <button ion-button clear icon-left color="dark">
+          <button ion-button clear icon-left color="dark" (click)="openBoughtPage()">
             <ion-icon name="ios-text-outline" color="danger"></ion-icon>
             评论已购商品
           </button>
@@ -97,6 +97,18 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+  </ion-card>
+  
+  <ion-card class="about-card simple-card">
+    <ion-item tappable (click)="openSetupPage()">
+      <button ion-button clear color="dark">
+        账户设置
+      </button>
+      <button ion-button navPop clear item-end color="dark">
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    
   </ion-card>
 
 </ion-content>

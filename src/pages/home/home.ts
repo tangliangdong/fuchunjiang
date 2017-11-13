@@ -1,15 +1,11 @@
 import {
-  Component,
-  ViewChild,
-  ComponentFactoryResolver,
-  ComponentFactory,
-  ViewContainerRef,
+  Component
 } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { HeaderPage } from '../header/header';
 import { ProductDetailPage } from '../product_detail/product_detail';
-import {CartPage} from '../cart/cart';
+import { CartPage } from '../cart/cart';
 
 @Component({
   selector: 'page-home',
@@ -17,11 +13,10 @@ import {CartPage} from '../cart/cart';
 })
 export class HomePage {
 
-  @ViewChild('header',{read: ViewContainerRef}) container: ViewContainerRef;
+  // @ViewChild('header',{read: ViewContainerRef}) container: ViewContainerRef;
 
   constructor(
-    public navCtrl: NavController,
-    private resolver: ComponentFactoryResolver) {
+    public navCtrl: NavController) {
 
   }
 

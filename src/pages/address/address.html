@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button ion-button navPop icon-start>
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>收货地址</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h3>您的地址</h3>
+  <ion-card>
+    <button ion-item (click)="openNewAddress()">新地址</button>
+  </ion-card>
+  <h4>个人地址</h4>
+  <ion-card class="address-card" *ngFor="let item of list" (click)="itemSelected(item)">
+    <p>{{item.name}}</p>
+    <p>{{item.province}} {{item.city}} {{item.county}}</p>
+    <p>{{item.street}}</p>
+    <p>电话号码：{{item.phone}}</p>
+    <ion-grid class="card-grid">
+      <ion-row>
+        <ion-col col-6><button ion-button small color="dark" outline (click)='openEditAddress($event,item)'>编辑</button></ion-col>
+        <ion-col col-6><button ion-button small color="dark" outline (click)='delete_address(item.id)'>删除</button></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-buttons>
+
+
+    </ion-buttons>
+  </ion-card>
+
+</ion-content>
