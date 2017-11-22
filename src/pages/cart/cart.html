@@ -15,5 +15,21 @@
 </ion-header>
 
 <ion-content>
+  <ion-card class="cart-card">
+    <ion-row>
+      <ion-col col-4>
+        <img src="assets/imgs/1.jpg" alt="">
+      </ion-col>
+      <ion-col col-8>
+        <p>【瑞士】Compressport 中性 R2 经典版小腿套（跑步、骑行、户外）欧洲生产 赛中使用 赛后恢复 Calf R2 CS...</p>
+        <p class="price">￥ 229</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <input type="number" class="number-input" value="1">
+      <button ion-button outline color="dark" class="delete_btn" (click)="delete_cart(1)">删除</button>
+    </ion-row>
+
+  </ion-card>
 
 </ion-content>

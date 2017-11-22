@@ -6,11 +6,12 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController,ModalController } from 'ionic-angular';
 
 import { HeaderPage } from '../header/header';
 import { ProductDetailPage } from '../product_detail/product_detail';
 import { CartPage } from '../cart/cart';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-category',
@@ -21,7 +22,8 @@ export class CategoryPage {
 
   constructor(
     public navCtrl: NavController,
-    private resolver: ComponentFactoryResolver) {
+    private resolver: ComponentFactoryResolver,
+    private modalCtrl: ModalController,) {
 
   }
 
@@ -30,7 +32,15 @@ export class CategoryPage {
   }
 
   openCart(){
-    this.navCtrl.push(CartPage);
+    let phone = localStorage.getItem('phone');
+    if(phone==undefined){
+      let loginModal = this.modalCtrl.create(LoginPage,{
+        isForcedLogin: true,
+      });
+      loginModal.present();
+    }else{
+      this.navCtrl.push(CartPage);
+    }
   }
 
   // ngAfterViewInit() {

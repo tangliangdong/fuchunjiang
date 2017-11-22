@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,ViewController,App } from 'ionic-angular';
+import { NavController,ViewController,App,ToastController } from 'ionic-angular';
 
 
 @Component({
@@ -11,8 +11,18 @@ export class CommentPage {
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
-    public appCtrl: App) {
+    public appCtrl: App,
+    private toastCtrl: ToastController,) {
 
+  }
+
+  send() {
+    let toast = this.toastCtrl.create({
+      message: '发送成功',
+      duration: 1000,
+      position: 'top',
+    });
+    toast.present();
   }
 
 }

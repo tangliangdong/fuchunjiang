@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button ion-button navPop icon-start>
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>手机号</ion-label>
+    <ion-input type="tel" [(ngModel)]="User.phone"></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col col-4>
+      <button ion-button outline (click)="get_validation()" color="dark" [disabled]="isWaiting">{{get_validation_button_text}}</button>
+    </ion-col>
+    <ion-col col-8>
+      <ion-item>
+        <ion-input type="number" placeholder="验证码" [(ngModel)]="User.code"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-item>
+    <ion-label>密码</ion-label>
+    <ion-input type="password" [(ngModel)]="User.password"></ion-input>
+  </ion-item>
+  <div padding>
+    <button block ion-button outline color="dark" (click)="doRegister()">注册</button>
+  </div>
+</ion-content>

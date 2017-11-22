@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController,ViewController,App,NavParams } from 'ionic-angular';
+import {
+  NavController,
+  ViewController,
+  App,
+  NavParams,
+} from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs';
+import { ProductDetailPage } from '../product_detail/product_detail';
 
 @Component({
   selector: 'page-wish-list',
@@ -25,6 +31,10 @@ export class WishListPage {
 
   popView(){
     this.appCtrl.getRootNav().push(TabsPage);
+  }
+
+  openDetailPage(id) {
+    this.navCtrl.push(ProductDetailPage);
   }
 
 }

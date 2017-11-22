@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpModule,JsonpModule} from '@angular/http';
 
 import { MyApp } from './app.component';
 
@@ -28,6 +29,8 @@ import { AddressPage } from '../pages/address/address';
 import { AlterPasswordPage } from '../pages/alter_password/alter_password';
 import { AccountPage } from '../pages/account/account';
 import { EditAddressPage } from '../pages/edit_address/edit_address';
+import { LoginDetailPage } from '../pages/login_detail/login_detail';
+import { RegisterPage } from '../pages/register/register';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -57,10 +60,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     AddressPage,
     EditAddressPage,
+    RegisterPage,
+    LoginDetailPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
+    JsonpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -86,6 +93,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     AddressPage,
     EditAddressPage,
+    RegisterPage,
+    LoginDetailPage,
   ],
   providers: [
     StatusBar,

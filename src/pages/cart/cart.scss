@@ -1,0 +1,19 @@
+page-cart{
+  .cart-card{
+
+    .price{
+      color: red;
+    }
+
+    .number-input{
+      font-size: 20px;
+      border: 1px solid #333;
+      width: 40px;
+      height: 40px;
+    }
+    .delete_btn{
+      height: 40px;
+      margin: 0 10px 10px;
+    }
+  }
+}

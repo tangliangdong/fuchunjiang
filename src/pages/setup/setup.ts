@@ -54,4 +54,15 @@ export class SetupPage {
     toast.present();
   }
 
+  exit() {
+    localStorage.clear();
+    let toast = this.toastCtrl.create({
+      message: '成功退出登录',
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+    this.appCtrl.getRootNav().setRoot(TabsPage);
+  }
+
 }
