@@ -31,7 +31,7 @@ import { AccountPage } from '../pages/account/account';
 import { EditAddressPage } from '../pages/edit_address/edit_address';
 import { LoginDetailPage } from '../pages/login_detail/login_detail';
 import { RegisterPage } from '../pages/register/register';
-
+import { IndentDetailPage } from '../pages/indent_detail/indent_detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -62,6 +62,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditAddressPage,
     RegisterPage,
     LoginDetailPage,
+    IndentDetailPage,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +96,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditAddressPage,
     RegisterPage,
     LoginDetailPage,
+    IndentDetailPage,
   ],
   providers: [
     StatusBar,

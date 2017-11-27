@@ -1,12 +1,7 @@
 <ion-header>
   <ion-navbar hideBackButton="true">
-    <ion-buttons start *ngIf="isPushPage">
+    <ion-buttons start>
       <button ion-button navPop icon-start>
-        <ion-icon name="ios-arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons start *ngIf="!isPushPage">
-      <button ion-button (click)="popView()" icon-start>
         <ion-icon name="ios-arrow-back"></ion-icon>
       </button>
     </ion-buttons>
@@ -15,18 +10,19 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>我的订单</ion-title>
+    <ion-title>订单详情页面</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let indent of indents" (click)="openIndent(indent)">
+    <ion-item *ngFor="let product of products">
       <ion-avatar item-start>
-        <img src="assets/imgs/1.jpg">
+        <img src="img/avatar-finn.png">
       </ion-avatar>
-      <h2>{{indent.number}}</h2>
-      <p>{{indent.price}} ￥</p>
+      <h2>{{product.product_id}}</h2>
+      <h3>{{product.price}}</h3>
+      <p>missing</p>
     </ion-item>
   </ion-list>
 </ion-content>

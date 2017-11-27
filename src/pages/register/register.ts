@@ -58,7 +58,7 @@ export class RegisterPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
-    this.http.post(SERVER_PATH+"register?phone="+this.User.phone+"&password="+this.User.password,options)
+    this.http.post(SERVER_PATH+"app/register?phone="+this.User.phone+"&password="+this.User.password,options)
       .toPromise()
       .then(res => {
         let data = res.json();
@@ -120,7 +120,7 @@ export class RegisterPage {
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       let options = new RequestOptions({ headers: headers });
-      this.http.post(SMS_PATH+'send?phone='+this.User.phone,options)
+      this.http.post(SMS_PATH+'app/send?phone='+this.User.phone,options)
         .toPromise()
         .then(res => {
           let data = res.json();

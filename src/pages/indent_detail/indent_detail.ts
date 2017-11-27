@@ -1,27 +1,31 @@
 import { Component } from '@angular/core';
-import {
-  NavController,
-  AlertController,
+import { NavController,
+  ViewController,
+  App,
+  NavParams,
   ToastController,
 } from 'ionic-angular';
 
 import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
 
 @Component({
-  selector: 'page-cart',
-  templateUrl: 'cart.html'
+  selector: 'page-indent-detail',
+  templateUrl: 'indent_detail.html'
 })
+export class IndentDetailPage {
 
-export class CartPage {
-
-  carts = [];
+  indentId = 0;
+  products = [];
 
   constructor(
     public navCtrl: NavController,
-    private alertCtrl: AlertController,
+    public viewCtrl: ViewController,
+    private toastCtrl: ToastController,
+    public appCtrl: App,
     private http: Http,
-    private toastCtrl: ToastController,) {
+    public navParams: NavParams) {
 
+      this.indentId = this.navParams.get('indentId');
   }
 
   ionViewWillEnter() {
@@ -30,14 +34,12 @@ export class CartPage {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ 'headers': headers });
 
-    let userId = localStorage.getItem('userId');
-    this.http.post(SERVER_PATH+'app/cart?userId='+userId,options)
+    this.http.post(SERVER_PATH+'app/indent_detail?indentId='+this.indentId,options)
       .toPromise()
       .then(res => {
         let data = res.json();
         console.log(data);
-        this.carts = data;
-
+        this.products = data;
       }).catch(err => {
         console.error(err);
         let toast = this.toastCtrl.create({
@@ -49,12 +51,4 @@ export class CartPage {
       });
   }
 
-  delete_cart(id) {
-    let toast = this.toastCtrl.create({
-      message: '删除商品成功',
-      duration: 1000,
-      position: 'top',
-    });
-    toast.present();
-  }
 }

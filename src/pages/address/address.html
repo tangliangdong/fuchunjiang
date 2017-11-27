@@ -21,8 +21,8 @@
   </ion-card>
   <h4>个人地址</h4>
   <ion-card class="address-card" *ngFor="let item of list" (click)="itemSelected(item)">
-    <p>{{item.name}}</p>
-    <p>{{item.province}} {{item.city}} {{item.county}}</p>
+    <p>收货人：{{item.username}}</p>
+    <p>收获地址：{{item.province}} {{item.city}} {{item.county}}</p>
     <p>{{item.street}}</p>
     <p>电话号码：{{item.phone}}</p>
     <ion-grid class="card-grid">

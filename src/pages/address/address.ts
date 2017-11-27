@@ -6,6 +6,8 @@ import {
   ToastController,
 } from 'ionic-angular';
 
+import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+
 import { EditAddressPage } from '../edit_address/edit_address';
 
 @Component({
@@ -15,31 +17,32 @@ import { EditAddressPage } from '../edit_address/edit_address';
 export class AddressPage {
 
   list = [
-    {
-      id: 1,
-      name: '唐良栋',
-      phone: 18868748898,
-      province: '浙江',
-      city: '杭州',
-      county: '临安区',
-      street: '青山湖街道胜联村168号',
-    },
-    {
-      id: 2,
-      name: '唐良栋',
-      phone: 18868748898,
-      province: '浙江',
-      city: '杭州',
-      county: '富阳区',
-      street: '文采路机金色家园7-2501',
-    },
+    // {
+    //   id: 1,
+    //   name: '唐良栋',
+    //   phone: 18868748898,
+    //   province: '浙江',
+    //   city: '杭州',
+    //   county: '临安区',
+    //   street: '青山湖街道胜联村168号',
+    // },
+    // {
+    //   id: 2,
+    //   name: '唐良栋',
+    //   phone: 18868748898,
+    //   province: '浙江',
+    //   city: '杭州',
+    //   county: '富阳区',
+    //   street: '文采路机金色家园7-2501',
+    // },
   ]
 
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     private alertCtrl: AlertController,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController,
+    private http: Http,) {
 
   }
 
@@ -83,6 +86,30 @@ export class AddressPage {
       ]
     });
     alert.present();
+  }
+
+  ionViewWillEnter() {
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ 'headers': headers });
+    let userId = localStorage.getItem('userId');
+    this.http.post(SERVER_PATH+'app/address?userId='+userId,options)
+      .toPromise()
+      .then(res => {
+        let data = res.json();
+        console.log(data);
+
+        this.list = data.address;
+      }).catch(err => {
+        console.error(err);
+        let toast = this.toastCtrl.create({
+          message: '网络错误',
+          duration: 1000,
+          position: 'top',
+        });
+        toast.present();
+      });
   }
 
   // 打开新建地址页面

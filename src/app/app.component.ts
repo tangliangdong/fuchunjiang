@@ -27,6 +27,10 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
+    if(localStorage.getItem('userId')!=null){
+      this.rootPage = TabsPage;
+    }
+
     // used for an example of ngFor and navigation
     this.first_pages = [
       { title: '首页', component: TabsPage },

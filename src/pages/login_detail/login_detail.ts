@@ -45,7 +45,7 @@ export class LoginDetailPage {
     let options = new RequestOptions({ headers: headers });
 
     let postParams = 'phone='+this.User.phone+'&password='+this.User.password;
-    this.http.post(SERVER_PATH+'login?phone='+this.User.phone+'&password='+this.User.password,options)
+    this.http.post(SERVER_PATH+'app/login?phone='+this.User.phone+'&password='+this.User.password,options)
       .toPromise()
       .then(res => {
         let listData = res.json();
@@ -56,6 +56,7 @@ export class LoginDetailPage {
           localStorage.setItem('username',listData.username);
           localStorage.setItem('addTime',listData.addTime);
           localStorage.setItem('add_time',listData.add_time);
+          localStorage.setItem('userId',listData.id);
 
           let toast = this.toastCtrl.create({
             message: '成功登录',
