@@ -18,36 +18,19 @@
     <ion-row>
       <ion-col col-3>
         <ion-scroll scrollY="true">
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-          <div class="left-nav-item"><p>为你推荐</p></div>
-
+          <div class="{{item.flag ? 'left-nav-item-actived':'left-nav-item'}}" *ngFor="let item of classify;let i = index;" (click)="click_classify(item,i)"><p>{{item.name}}</p></div>
         </ion-scroll>
       </ion-col>
       <ion-col col-9>
         <ion-scroll scrollY="true">
           <ion-list>
-            <ion-item tappable (click)="openDetail(1)">
+            <ion-item tappable (click)="openDetail(product)" *ngFor="let product of Products">
               <ion-thumbnail item-start>
                 <img src="assets/imgs/1.jpg">
               </ion-thumbnail>
-              <h4>解忧杂货店</h4>
-              <p>东野圭吾</p>
-              <p>￥19.99</p>
+              <h4>{{product.name}}</h4>
+              <p>{{product.add_time}}</p>
+              <p>￥{{product.price}}</p>
             </ion-item>
           </ion-list>
         </ion-scroll>

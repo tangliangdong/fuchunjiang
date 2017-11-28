@@ -12,12 +12,12 @@
 <ion-content>
   <ion-item>
     <ion-label color="primary">问题标题：</ion-label>
-    <ion-input placeholder=""></ion-input>
+    <ion-input placeholder="" [(ngModel)]="Comment.title"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="primary" fixed>问题描述</ion-label>
-    <ion-textarea placeholder=""></ion-textarea>
+    <ion-textarea placeholder="" [(ngModel)]="Comment.content"></ion-textarea>
   </ion-item>
   <div padding>
     <button ion-button outline block color="dark" (click)="send()">发送</button>

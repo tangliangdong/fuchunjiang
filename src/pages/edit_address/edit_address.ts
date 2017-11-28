@@ -17,7 +17,7 @@ export class EditAddressPage {
 
   Address = {
     id: 0,
-    name: '',
+    username: '',
     phone: '',
     province: '',
     city: '',

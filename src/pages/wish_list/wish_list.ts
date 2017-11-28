@@ -4,7 +4,10 @@ import {
   ViewController,
   App,
   NavParams,
+  ToastController,
 } from 'ionic-angular';
+
+import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
 
 import { TabsPage } from '../tabs/tabs';
 import { ProductDetailPage } from '../product_detail/product_detail';
@@ -16,17 +19,39 @@ import { ProductDetailPage } from '../product_detail/product_detail';
 export class WishListPage {
 
   isPushPage = false;
+  wishList = [];
 
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
+    private toastCtrl: ToastController,
     public appCtrl: App,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    private http: Http,) {
 
     if(this.navParams.get('isPushPage')!=undefined){
       this.isPushPage = this.navParams.get('isPushPage');
     }
 
+  }
+
+  ionViewWillEnter() {
+    let userId = localStorage.getItem('userId');
+    this.http.get(SERVER_PATH+'app/wish?userId='+userId)
+      .toPromise()
+      .then(res => {
+        let data = res.json();
+        console.log(data);
+        this.wishList = data.wish;
+      }).catch(err => {
+        console.error(err);
+        let toast = this.toastCtrl.create({
+          message: '网络错误',
+          duration: 1000,
+          position: 'top',
+        });
+        toast.present();
+      });
   }
 
   popView(){
