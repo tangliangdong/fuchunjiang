@@ -54,7 +54,7 @@ export class AddressPage {
   }
 
   itemSelected(event: any){
-    
+
   }
   // 删除地址
   delete_address(){
@@ -87,12 +87,8 @@ export class AddressPage {
   }
 
   ionViewWillEnter() {
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    let options = new RequestOptions({ headers: headers });
     let userId = localStorage.getItem('userId');
-    this.http.post(SERVER_PATH+'app/address?userId='+userId,options)
+    this.http.get(SERVER_PATH+'app/address?userId='+userId)
       .toPromise()
       .then(res => {
         let data = res.json();

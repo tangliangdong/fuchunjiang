@@ -10,9 +10,15 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>登录与安全</ion-title>
+    <ion-title>账户信息</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content padding>
+  <ion-item>
+    <ion-label color="primary">用户名：</ion-label>
+    <ion-input type="text" [(ngModel)]="username"></ion-input>
+  </ion-item>
+  <button ion-button block outline (click)="save()" color="dark">保存</button>
+  <button ion-button block outline (click)="alter_passwd()" color="danger">修改密码</button>
 
-<ion-content>
 </ion-content>

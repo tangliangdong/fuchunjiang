@@ -32,9 +32,11 @@ import { EditAddressPage } from '../pages/edit_address/edit_address';
 import { LoginDetailPage } from '../pages/login_detail/login_detail';
 import { RegisterPage } from '../pages/register/register';
 import { IndentDetailPage } from '../pages/indent_detail/indent_detail';
+import { PlaceOrderPage } from '../pages/place_order/place_order';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterPage,
     LoginDetailPage,
     IndentDetailPage,
+    PlaceOrderPage,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +100,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterPage,
     LoginDetailPage,
     IndentDetailPage,
+    PlaceOrderPage,
   ],
   providers: [
     StatusBar,

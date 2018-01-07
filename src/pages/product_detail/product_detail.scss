@@ -1,3 +1,15 @@
 page-product-detail {
 
+  .price{
+    font-size: 18px;
+    color: red;
+  }
+
+  .content{
+    padding: .1rem 1rem;
+
+    p{
+      margin: 1rem 0;
+    }
+  }
 }

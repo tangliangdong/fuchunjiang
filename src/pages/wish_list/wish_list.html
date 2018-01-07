@@ -20,12 +20,12 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item tappable (click)="openDetailPage(1)">
+    <ion-item *ngFor="let wish of wishList" (click)="openWish(wish)">
       <ion-avatar item-start>
         <img src="assets/imgs/1.jpg">
       </ion-avatar>
-      <h2>Cher</h2>
-      <p>Ugh. As if.</p>
+      <h2>{{wish.name}}</h2>
+      <p>{{wish.price}} ￥</p>
     </ion-item>
   </ion-list>
 </ion-content>

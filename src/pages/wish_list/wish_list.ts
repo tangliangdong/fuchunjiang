@@ -32,7 +32,6 @@ export class WishListPage {
     if(this.navParams.get('isPushPage')!=undefined){
       this.isPushPage = this.navParams.get('isPushPage');
     }
-
   }
 
   ionViewWillEnter() {
@@ -42,7 +41,7 @@ export class WishListPage {
       .then(res => {
         let data = res.json();
         console.log(data);
-        this.wishList = data.wish;
+        this.wishList = data;
       }).catch(err => {
         console.error(err);
         let toast = this.toastCtrl.create({
@@ -52,6 +51,12 @@ export class WishListPage {
         });
         toast.present();
       });
+  }
+
+  openWish(wish){
+    this.navCtrl.push(ProductDetailPage,{
+      id: wish.idd
+    })
   }
 
   popView(){

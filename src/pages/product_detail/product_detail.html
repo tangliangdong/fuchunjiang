@@ -14,5 +14,13 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  {{Product.name}} {{Product.price}}
+  <img src="assets/imgs/1.jpg">
+  <div class="content">
+    <p>{{Product.name}}</p>
+    <p class="price">￥ {{Product.price}}</p>
+    <button ion-button block color="orange" (click)="add_cart(Product)">加入购物车</button>
+    <button ion-button block color="danger" (click)="add_wish(Product)">加入心愿单</button>
+  </div>
+
+
 </ion-content>

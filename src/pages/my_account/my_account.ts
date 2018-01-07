@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController,ViewController,App,NavParams } from 'ionic-angular';
 
+import { IndentPage } from '../indent/indent';
 import { TabsPage } from '../tabs/tabs';
 
 @Component({
@@ -25,6 +26,12 @@ export class MyAccountPage {
 
   popView(){
     this.appCtrl.getRootNav().push(TabsPage);
+  }
+
+  open_indent(){
+    this.navCtrl.push(IndentPage,{
+      isPushPage: true,
+    });
   }
 
 }

@@ -44,6 +44,70 @@ export class ProductDetailPage {
 
   }
 
+  add_cart(Product){
+    let userId = localStorage.getItem('userId');
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+    this.http.post(SERVER_PATH+'app/get_in_cart?userId='+userId+'&productId='+Product.id+'&count=1',options)
+      .toPromise()
+      .then(res => {
+        let data = res.json();
+        console.log(data);
+
+        if(data.status===1){
+          let toast = this.toastCtrl.create({
+            message: '成功加入购物车',
+            duration: 1000,
+            position: 'top',
+          });
+          toast.present();
+        }
+
+      }).catch(err => {
+        console.error(err);
+        let toast = this.toastCtrl.create({
+          message: '网络错误',
+          duration: 1000,
+          position: 'top',
+        });
+        toast.present();
+      });
+  }
+
+  add_wish(Product){
+    let userId = localStorage.getItem('userId');
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+    this.http.post(SERVER_PATH+'app/wish/add?userId='+userId+'&productId='+Product.id,options)
+      .toPromise()
+      .then(res => {
+        let data = res.json();
+        console.log(data);
+
+        if(data.status===1){
+          let toast = this.toastCtrl.create({
+            message: '成功加入心愿单',
+            duration: 1000,
+            position: 'top',
+          });
+          toast.present();
+        }
+
+      }).catch(err => {
+        console.error(err);
+        let toast = this.toastCtrl.create({
+          message: '网络错误',
+          duration: 1000,
+          position: 'top',
+        });
+        toast.present();
+      });
+  }
+
   popView(){
     this.appCtrl.getRootNav().push(TabsPage);
   }

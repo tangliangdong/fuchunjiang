@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,ViewController,App } from 'ionic-angular';
+import { NavController,ViewController,App,NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-article',
@@ -7,11 +7,15 @@ import { NavController,ViewController,App } from 'ionic-angular';
 })
 export class ArticlePage {
 
+  article = '';
+
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
+    public navParams: NavParams,
     public appCtrl: App) {
-
+      this.article = this.navParams.get('article');
+      
   }
 
 }

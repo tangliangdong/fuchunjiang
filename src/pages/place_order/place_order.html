@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons start>
+      <button ion-button navPop icon-start>
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>确认订单</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>收货地址</ion-label>
+      <ion-select [(ngModel)]="addressId" (ngModelChange)="select_address($event)">
+        <ng-container *ngFor="let item of address;let i=index">
+          <ion-option value="{{item.id}}" selected="{{i==0?true:false}}">{{item.province+item.city+item.county+' '+item.username+'收'}}</ion-option>
+        </ng-container>
+      </ion-select>
+    </ion-item>
+    <ion-card class="address-card">
+      <p>收货人：{{address_item.username}}</p>
+      <p>收获地址：{{address_item.province}} {{address_item.city}} {{address_item.county}}</p>
+      <p>{{address_item.street}}</p>
+      <p>电话号码：{{address_item.phone}}</p>
+    </ion-card>
+    <ion-card *ngFor="let product of products;let i=index">
+      <ion-card-header>
+        {{product.name}}
+      </ion-card-header>
+      <ion-card-content>
+        <p>￥ {{product.price}}</p>
+        <p>{{product.count}}个</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-item>
+      <ion-label>备注：</ion-label>
+      <ion-input placeholder="输入备注信息" [(ngModel)]="note"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button block outline color="danger" (click)="comfirm_indent()">确认订单</button>
+</ion-content>

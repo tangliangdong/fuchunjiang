@@ -26,9 +26,11 @@
     </ion-row>
     <ion-row>
       <input type="number" class="number-input" value="{{cart.count}}">
-      <button ion-button outline color="dark" class="delete_btn" (click)="delete_cart(1)">删除</button>
+      <button ion-button outline color="dark" class="delete_btn" (click)="delete_cart(cart)">删除</button>
     </ion-row>
 
   </ion-card>
 
+  <button ion-button outline color="danger" block (click)="purchase()" *ngIf="carts.length>0">购买</button>
+  <button ion-button outline color="danger" block (click)="purchase()" disabled *ngIf="carts.length==0">购买</button>
 </ion-content>

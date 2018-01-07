@@ -14,36 +14,12 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-  <ion-card tappable (click)="openArticlePage(1)">
+  <ion-card tappable (click)="openArticlePage(article)" *ngFor="let article of articles">
     <img src="assets/imgs/1.jpg"/>
-    <div class="card-title">São Paulo</div>
-    <div class="card-subtitle">41 Listings</div>
+    <div class="card-title">{{article.title}}</div>
+    <div class="card-subtitle">{{article.author}}</div>
     <button ion-button class="collection-btn icon-only" color="transparent" large (click)="collecting(1)">
       <ion-icon [name]="icon"></ion-icon>
     </button>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/imgs/2.jpg"/>
-    <div class="card-title">Amsterdam</div>
-    <div class="card-subtitle">64 Listings</div>
-    <button ion-button class="collection-btn icon-only" color="transparent" large (click)="collecting(2)">
-      <ion-icon [name]="icon"></ion-icon>
-    </button>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/imgs/3.jpg"/>
-    <div class="card-title">San Francisco</div>
-    <div class="card-subtitle">72 Listings</div>
-    <button ion-button class="collection-btn icon-only" color="transparent" large (click)="collecting(3)">
-      <ion-icon [name]="icon"></ion-icon>
-    </button>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/imgs/4.jpg"/>
-    <div class="card-title">Madison</div>
-    <div class="card-subtitle">28 Listings</div>
   </ion-card>
 </ion-content>

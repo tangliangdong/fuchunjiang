@@ -8,6 +8,8 @@ import {
 
 import { NavController,ToastController } from 'ionic-angular';
 
+import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+
 import { HeaderPage } from '../header/header';
 import { ArticlePage } from '../article/article';
 import { CartPage } from '../cart/cart';
@@ -21,12 +23,33 @@ export class ExplorePage {
 
   @ViewChild('header',{read: ViewContainerRef}) container: ViewContainerRef;
 
+  articles = [];
   icon = "ios-heart-outline";
   collect_flag = true;
   constructor(private toastCtrl: ToastController,
     public navCtrl: NavController,
+    private http: Http,
     private resolver: ComponentFactoryResolver) {
 
+  }
+
+  ionViewWillEnter() {
+
+    this.http.get(SERVER_PATH+'app/article')
+      .toPromise()
+      .then(res => {
+        let data = res.json();
+        console.log(data);
+        this.articles = data;
+      }).catch(err => {
+        console.error(err);
+        let toast = this.toastCtrl.create({
+          message: '网络错误',
+          duration: 1000,
+          position: 'top',
+        });
+        toast.present();
+      });
   }
 
   collecting(id) {
@@ -58,8 +81,10 @@ export class ExplorePage {
   }
 
   // 跳转文章页
-  openArticlePage(id){
-    this.navCtrl.push(ArticlePage);
+  openArticlePage(article){
+    this.navCtrl.push(ArticlePage,{
+      'article': article,
+    });
   }
 
   // ngAfterViewInit() {

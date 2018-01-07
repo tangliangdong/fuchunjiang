@@ -3,7 +3,10 @@ import {
   NavController,
   AlertController,
   ToastController,
+  ModalController,
 } from 'ionic-angular';
+
+import { PlaceOrderPage } from '../place_order/place_order';
 
 import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
 
@@ -19,19 +22,15 @@ export class CartPage {
   constructor(
     public navCtrl: NavController,
     private alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     private http: Http,
     private toastCtrl: ToastController,) {
 
   }
 
   ionViewWillEnter() {
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    let options = new RequestOptions({ 'headers': headers });
-
     let userId = localStorage.getItem('userId');
-    this.http.post(SERVER_PATH+'app/cart?userId='+userId,options)
+    this.http.get(SERVER_PATH+'app/cart?userId='+userId)
       .toPromise()
       .then(res => {
         let data = res.json();
@@ -49,12 +48,58 @@ export class CartPage {
       });
   }
 
-  delete_cart(id) {
-    let toast = this.toastCtrl.create({
-      message: '删除商品成功',
-      duration: 1000,
-      position: 'top',
+  delete_cart(cart) {
+    let id = cart.id;
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.post(SERVER_PATH+'app/cart/delete?id='+id,options)
+      .toPromise()
+      .then(res => {
+        let data = res.json();
+        console.log(data);
+        if(data.status===1){
+          for(var i in this.carts){
+            if(this.carts[i].id == id){
+              this.carts.splice(i,1);
+              break;
+            }
+          }
+          let toast = this.toastCtrl.create({
+            message: '删除商品成功',
+            duration: 1000,
+            position: 'top',
+          });
+          toast.present();
+        }
+
+
+      }).catch(err => {
+        console.error(err);
+        let toast = this.toastCtrl.create({
+          message: '网络错误',
+          duration: 1000,
+          position: 'top',
+        });
+        toast.present();
+      });
+
+  }
+
+
+  purchase(){
+    let indentModal = this.modalCtrl.create(PlaceOrderPage,{
+      carts: this.carts,
     });
-    toast.present();
+    indentModal.onDidDismiss(data => {
+      console.log(data);
+      if(data!=undefined&&data.status===1){
+        this.carts.length = 0;
+        console.log(this.carts)
+      }
+    });
+    indentModal.present();
   }
 }

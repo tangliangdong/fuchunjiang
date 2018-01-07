@@ -31,16 +31,9 @@
   </ion-slides>
 
   <ion-list>
-    <ion-card class="home-card">
+    <!-- <ion-card class="home-card">
       <img src="assets/imgs/1.jpg"/>
       <ion-card-content>
-        <!-- <ion-card-title>
-          Kindle oasis
-        </ion-card-title>
-        <p>
-          The most popular industrial group ever, and largely
-          responsible for bringing the music to a mass audience.
-        </p> -->
         <ion-scroll scrollX="true" class="card-scroll">
           <div class="scroll-item" tappable (click)="openDetail(1)">
             <img src="assets/imgs/1.jpg" alt="">
@@ -56,6 +49,19 @@
 
 
       </ion-card-content>
+    </ion-card> -->
+
+    <ion-card *ngFor="let product of products" (click)="openDetailProduct(product)">
+      <img src="assets/imgs/1.jpg"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{product.name}}
+        </ion-card-title>
+        <p>￥ {{product.price}}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+
     </ion-card>
   </ion-list>
 

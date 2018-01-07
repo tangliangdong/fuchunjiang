@@ -53,8 +53,6 @@ export class CategoryPage {
   }
 
   click_classify(item,index) {
-    console.log(index)
-    console.log(item)
     this.classify[index].flag = true;
     this.classify[this.lastOne].flag = false;
     var headers = new Headers();
