@@ -8,7 +8,8 @@ import {
 
 import { PlaceOrderPage } from '../place_order/place_order';
 
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import { Http,Response,Jsonp,RequestOptions,Headers } from '@angular/http';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-cart',
@@ -30,7 +31,7 @@ export class CartPage {
 
   ionViewWillEnter() {
     let userId = localStorage.getItem('userId');
-    this.http.get(SERVER_PATH+'app/cart?userId='+userId)
+    this.http.get(AppConfig.SERVER_PATH+'app/cart?userId='+userId)
       .toPromise()
       .then(res => {
         let data = res.json();
@@ -55,15 +56,14 @@ export class CartPage {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
 
-    this.http.post(SERVER_PATH+'app/cart/delete?id='+id,options)
+    this.http.post(AppConfig.SERVER_PATH+'app/cart/delete?id='+id,options)
       .toPromise()
       .then(res => {
         let data = res.json();
-        console.log(data);
         if(data.status===1){
           for(var i in this.carts){
             if(this.carts[i].id == id){
-              this.carts.splice(i,1);
+              this.carts.splice(parseInt(i),1);
               break;
             }
           }
@@ -77,7 +77,6 @@ export class CartPage {
 
 
       }).catch(err => {
-        console.error(err);
         let toast = this.toastCtrl.create({
           message: '网络错误',
           duration: 1000,
@@ -94,10 +93,8 @@ export class CartPage {
       carts: this.carts,
     });
     indentModal.onDidDismiss(data => {
-      console.log(data);
       if(data!=undefined&&data.status===1){
         this.carts.length = 0;
-        console.log(this.carts)
       }
     });
     indentModal.present();

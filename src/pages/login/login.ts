@@ -10,6 +10,7 @@ import { TabsPage } from '../tabs/tabs';
 
 import { LoginDetailPage } from '../login_detail/login_detail';
 import { RegisterPage } from '../register/register';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-login',

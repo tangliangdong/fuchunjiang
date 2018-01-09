@@ -1,7 +1,7 @@
 import {
   Component
 } from '@angular/core';
-import { NavController,ModalController } from 'ionic-angular';
+import { NavController,ModalController,ToastController } from 'ionic-angular';
 
 import { HeaderPage } from '../header/header';
 import { ProductDetailPage } from '../product_detail/product_detail';
@@ -9,6 +9,7 @@ import { CartPage } from '../cart/cart';
 import { LoginPage } from '../login/login';
 
 import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-home',
@@ -23,13 +24,14 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     private http: Http,
+    private toastCtrl: ToastController,
     private modalCtrl: ModalController) {
 
   }
 
   ionViewWillEnter() {
 
-    this.http.get(SERVER_PATH+'app/home')
+    this.http.get(AppConfig.SERVER_PATH+'app/home')
       .toPromise()
       .then(res => {
         let data = res.json();

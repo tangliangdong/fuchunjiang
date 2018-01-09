@@ -8,12 +8,13 @@ import {
 
 import { NavController,ModalController,ToastController } from 'ionic-angular';
 
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import { Http,Response,Jsonp,RequestOptions,Headers } from '@angular/http';
 
 import { HeaderPage } from '../header/header';
 import { ProductDetailPage } from '../product_detail/product_detail';
 import { CartPage } from '../cart/cart';
 import { LoginPage } from '../login/login';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-category',
@@ -59,7 +60,7 @@ export class CategoryPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
-    this.http.post(SERVER_PATH+'app/get_product?pid='+this.classify[index].id,options)
+    this.http.post(AppConfig.SERVER_PATH+'app/get_product?pid='+this.classify[index].id,options)
       .toPromise()
       .then(res => {
         let data = res.json();
@@ -83,7 +84,7 @@ export class CategoryPage {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
     let userId = localStorage.getItem('userId');
-    this.http.post(SERVER_PATH+'app/classify',options)
+    this.http.post(AppConfig.SERVER_PATH+'app/classify',options)
       .toPromise()
       .then(res => {
         let data = res.json();
@@ -95,7 +96,7 @@ export class CategoryPage {
           headers.append("Accept", 'application/json');
           headers.append('Content-Type', 'application/x-www-form-urlencoded');
           let options = new RequestOptions({ headers: headers });
-          this.http.post(SERVER_PATH+'app/get_product?pid='+this.classify[0].id,options)
+          this.http.post(AppConfig.SERVER_PATH+'app/get_product?pid='+this.classify[0].id,options)
             .toPromise()
             .then(res => {
               let data = res.json();

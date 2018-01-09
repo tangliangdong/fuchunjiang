@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController,ViewController,App,NavParams } from 'ionic-angular';
+import { NavController,ViewController,App,NavParams,ToastController } from 'ionic-angular';
 
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import { Http,Response,Jsonp,RequestOptions,Headers } from '@angular/http';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-place-order',
@@ -13,11 +14,13 @@ export class PlaceOrderPage {
   address_item = '';
   addressId = 0;
   note = '';
+  products: any;
 
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public navParams: NavParams,
+    private toastCtrl: ToastController,
     private http: Http,
     public appCtrl: App) {
 
@@ -41,7 +44,7 @@ export class PlaceOrderPage {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
     let userId = localStorage.getItem('userId');
-    let url = SERVER_PATH+'app/indent/add?userId='+userId+'&note='+this.note+'&addressId='+this.addressId;
+    let url = AppConfig.SERVER_PATH+'app/indent/add?userId='+userId+'&note='+this.note+'&addressId='+this.addressId;
     this.http.post(url,options)
       .toPromise()
       .then(res => {
@@ -62,7 +65,7 @@ export class PlaceOrderPage {
 
   ionViewWillEnter(){
     let userId = localStorage.getItem('userId');
-    this.http.get(SERVER_PATH+'app/address?userId='+userId)
+    this.http.get(AppConfig.SERVER_PATH+'app/address?userId='+userId)
       .toPromise()
       .then(res => {
         let data = res.json();

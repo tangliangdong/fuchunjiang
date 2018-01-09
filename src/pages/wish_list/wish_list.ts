@@ -11,6 +11,7 @@ import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
 
 import { TabsPage } from '../tabs/tabs';
 import { ProductDetailPage } from '../product_detail/product_detail';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-wish-list',
@@ -36,7 +37,7 @@ export class WishListPage {
 
   ionViewWillEnter() {
     let userId = localStorage.getItem('userId');
-    this.http.get(SERVER_PATH+'app/wish?userId='+userId)
+    this.http.get(AppConfig.SERVER_PATH+'app/wish?userId='+userId)
       .toPromise()
       .then(res => {
         let data = res.json();

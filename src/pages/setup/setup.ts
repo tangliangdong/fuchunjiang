@@ -10,6 +10,7 @@ import {
 import { TabsPage } from '../tabs/tabs';
 import { AddressPage } from '../address/address';
 import { AccountPage } from '../account/account';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-setup',

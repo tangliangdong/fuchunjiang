@@ -13,6 +13,7 @@ import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
 import { HeaderPage } from '../header/header';
 import { ArticlePage } from '../article/article';
 import { CartPage } from '../cart/cart';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-explore',
@@ -35,7 +36,7 @@ export class ExplorePage {
 
   ionViewWillEnter() {
 
-    this.http.get(SERVER_PATH+'app/article')
+    this.http.get(AppConfig.SERVER_PATH+'app/article')
       .toPromise()
       .then(res => {
         let data = res.json();

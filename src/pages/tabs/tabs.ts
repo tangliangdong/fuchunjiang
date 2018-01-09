@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { ModalController,NavController } from 'ionic-angular';
+import { ModalController,NavController,Tabs } from 'ionic-angular';
 
 import { AboutPage } from '../about/about';
 import { CategoryPage } from '../category/category';

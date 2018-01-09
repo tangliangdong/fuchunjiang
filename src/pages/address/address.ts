@@ -9,6 +9,7 @@ import {
 import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
 
 import { EditAddressPage } from '../edit_address/edit_address';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-address',
@@ -88,7 +89,7 @@ export class AddressPage {
 
   ionViewWillEnter() {
     let userId = localStorage.getItem('userId');
-    this.http.get(SERVER_PATH+'app/address?userId='+userId)
+    this.http.get(AppConfig.SERVER_PATH+'app/address?userId='+userId)
       .toPromise()
       .then(res => {
         let data = res.json();

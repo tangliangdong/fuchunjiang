@@ -5,8 +5,8 @@ import {
   App,
   ToastController,
 } from 'ionic-angular';
-import { Http,Response,RequestOptions } from '@angular/http';
-
+import { Http,Response,RequestOptions,Headers } from '@angular/http';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-register',
@@ -14,9 +14,9 @@ import { Http,Response,RequestOptions } from '@angular/http';
 })
 export class RegisterPage {
 
-  get_validation_button_text = '发送验证码';
+  get_validation_button_text:any;
   isWaiting = false;
-  timeFlag = '';
+  timeFlag: number;
   phoneCode = '';
   User = {
     phone: '',
@@ -30,11 +30,12 @@ export class RegisterPage {
     public appCtrl: App,
     private toastCtrl: ToastController,
     private http: Http,) {
+      this.get_validation_button_text = '发送验证码';
 
   }
 
   doRegister() {
-    let $this = this;
+    var $this = this;
     if(this.phoneCode !== this.User.code){
       let toast = this.toastCtrl.create({
         message: '验证码错误',
@@ -58,11 +59,10 @@ export class RegisterPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
-    this.http.post(SERVER_PATH+"app/register?phone="+this.User.phone+"&password="+this.User.password,options)
+    this.http.post(AppConfig.SERVER_PATH+"app/register?phone="+this.User.phone+"&password="+this.User.password,options)
       .toPromise()
       .then(res => {
         let data = res.json();
-        console.log(data);
         if(data.status===1){
           $this.phoneCode = data.code;
         }
@@ -90,7 +90,7 @@ export class RegisterPage {
 
   get_validation() {
     const regex = /^1[0-9]{10}$/g;
-    let $this = this;
+    var $this = this;
     if(this.User.phone == ''){
       let toast = this.toastCtrl.create({
         message: '请先输入手机号',
@@ -101,9 +101,9 @@ export class RegisterPage {
       return;
     }
     if( regex.test(this.User.phone) ){
-      let $this = this;
-      this.get_validation_button_text = 60;
-      this.isWaiting = true;
+      var $this = this;
+      $this.get_validation_button_text = 60;
+      $this.isWaiting = true;
 
       this.timeFlag = setInterval(function(){
         if($this.get_validation_button_text<=0){
@@ -120,7 +120,7 @@ export class RegisterPage {
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       let options = new RequestOptions({ headers: headers });
-      this.http.post(SMS_PATH+'app/send?phone='+this.User.phone,options)
+      this.http.post(AppConfig.SMS_PATH+'app/send?phone='+this.User.phone,options)
         .toPromise()
         .then(res => {
           let data = res.json();

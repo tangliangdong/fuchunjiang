@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController,ViewController,App,ToastController } from 'ionic-angular';
 
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import { Http,Response,Jsonp,RequestOptions,Headers } from '@angular/http';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-comment',
@@ -30,7 +31,7 @@ export class CommentPage {
     let options = new RequestOptions({ headers: headers });
     let userId = localStorage.getItem('userId');
 
-    this.http.post(SERVER_PATH+'app/discuss/add?title='+this.Comment.title+'&content='+this.Comment.content+'&userId='+userId,options)
+    this.http.post(AppConfig.SERVER_PATH+'app/discuss/add?title='+this.Comment.title+'&content='+this.Comment.content+'&userId='+userId,options)
       .toPromise()
       .then(res => {
         let data = res.json();

@@ -4,6 +4,7 @@ import { NavController,ViewController,App,ModalController,ToastController } from
 import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
 
 import { AlterPasswordPage } from '../alter_password/alter_password';
+import { AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-account',
@@ -23,7 +24,7 @@ export class AccountPage {
 
       let userId = localStorage.getItem('userId');
 
-      this.http.get(SERVER_PATH+'app/user/userinfo?userId='+userId)
+      this.http.get(AppConfig.SERVER_PATH+'app/user/userinfo?userId='+userId)
         .toPromise()
         .then(res => {
           let data = res.json();

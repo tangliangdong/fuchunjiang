@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController,ViewController,App,NavParams,ToastController } from 'ionic-angular';
 
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import { Http,Response,Jsonp,RequestOptions,Headers } from '@angular/http';
 
 import { TabsPage } from '../tabs/tabs';
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-product-detail',
@@ -26,7 +27,7 @@ export class ProductDetailPage {
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       let options = new RequestOptions({ headers: headers });
-      this.http.post(SERVER_PATH+'app/product?id='+id,options)
+      this.http.post(AppConfig.SERVER_PATH+'app/product?id='+id,options)
         .toPromise()
         .then(res => {
           let data = res.json();
@@ -50,7 +51,7 @@ export class ProductDetailPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
-    this.http.post(SERVER_PATH+'app/get_in_cart?userId='+userId+'&productId='+Product.id+'&count=1',options)
+    this.http.post(AppConfig.SERVER_PATH+'app/get_in_cart?userId='+userId+'&productId='+Product.id+'&count=1',options)
       .toPromise()
       .then(res => {
         let data = res.json();
@@ -82,7 +83,7 @@ export class ProductDetailPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
-    this.http.post(SERVER_PATH+'app/wish/add?userId='+userId+'&productId='+Product.id,options)
+    this.http.post(AppConfig.SERVER_PATH+'app/wish/add?userId='+userId+'&productId='+Product.id,options)
       .toPromise()
       .then(res => {
         let data = res.json();

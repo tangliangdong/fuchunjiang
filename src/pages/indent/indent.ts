@@ -4,8 +4,8 @@ import { NavController,ViewController,App,NavParams,ToastController } from 'ioni
 import { TabsPage } from '../tabs/tabs';
 import { IndentDetailPage } from '../indent_detail/indent_detail';
 
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
-
+import { Http,Response,Jsonp,RequestOptions,Headers } from '@angular/http';
+import{ AppConfig }from'./../../app/app.config';
 @Component({
   selector: 'page-indent',
   templateUrl: 'indent.html'
@@ -35,7 +35,7 @@ export class IndentPage {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ 'headers': headers });
 
-    this.http.post(SERVER_PATH+'app/indent?userId='+userId,options)
+    this.http.post(AppConfig.SERVER_PATH+'app/indent?userId='+userId,options)
       .toPromise()
       .then(res => {
         let data = res.json();

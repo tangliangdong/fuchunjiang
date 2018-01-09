@@ -6,10 +6,11 @@ import {
   ToastController,
   LoadingController,
 } from 'ionic-angular';
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import { Http,Response,Jsonp,RequestOptions,Headers } from '@angular/http';
 
 import { TabsPage } from '../tabs/tabs';
 
+import{ AppConfig }from'./../../app/app.config';
 
 @Component({
   selector: 'page-login-detail',
@@ -45,7 +46,7 @@ export class LoginDetailPage {
     let options = new RequestOptions({ headers: headers });
 
     let postParams = 'phone='+this.User.phone+'&password='+this.User.password;
-    this.http.post(SERVER_PATH+'app/login?phone='+this.User.phone+'&password='+this.User.password,options)
+    this.http.post(AppConfig.SERVER_PATH+'app/login?phone='+this.User.phone+'&password='+this.User.password,options)
       .toPromise()
       .then(res => {
         let listData = res.json();

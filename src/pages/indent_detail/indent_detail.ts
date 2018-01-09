@@ -5,8 +5,9 @@ import { NavController,
   NavParams,
   ToastController,
 } from 'ionic-angular';
+import{ AppConfig }from'./../../app/app.config';
 
-import { Http,Response,Jsonp,RequestOptions } from '@angular/http';
+import { Http,Response,Jsonp,RequestOptions,Headers } from '@angular/http';
 
 @Component({
   selector: 'page-indent-detail',
@@ -34,7 +35,7 @@ export class IndentDetailPage {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ 'headers': headers });
 
-    this.http.post(SERVER_PATH+'app/indent_detail?indentId='+this.indentId,options)
+    this.http.post(AppConfig.SERVER_PATH+'app/indent_detail?indentId='+this.indentId,options)
       .toPromise()
       .then(res => {
         let data = res.json();
